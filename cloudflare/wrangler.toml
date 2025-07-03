@@ -1,0 +1,25 @@
+name = "sss-api-edge"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[env.production]
+vars = { ORIGIN_URL = "https://core.sss.gov.uk" }
+
+[[env.production.kv_namespaces]]
+binding = "KV"
+id = "068d861639414cd6949aca9c2b37a906"
+
+[env.staging]
+vars = { ORIGIN_URL = "https://staging.sss.gov.uk" }
+kv_namespaces = [
+  { binding = "KV", id = "your-staging-kv-id" }
+]
+
+# Routes will be configured after deployment
+# [[routes]]
+# pattern = "sss.gov.uk/api/*"
+# zone_name = "sss.gov.uk"
+
+# Performance settings
+# [build]
+# command = "npm install"

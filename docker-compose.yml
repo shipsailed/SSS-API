@@ -1,0 +1,177 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: sss-api-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-sss-secure-password}
+      POSTGRES_DB: sss_api
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/infrastructure/database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: sss-api-redis
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-redis-secure-password}
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: sss-api-redis-commander
+    environment:
+      - REDIS_HOSTS=local:redis:6379:0:${REDIS_PASSWORD:-redis-secure-password}
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: sss-api-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@sss-api.local
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-pgadmin-password}
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+
+  # SSS-API application containers
+  sss-api-stage1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sss-api-stage1
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: sss_api
+      DB_USER: postgres
+      DB_PASSWORD: ${DB_PASSWORD:-sss-secure-password}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-redis-secure-password}
+      STAGE: stage1
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+
+  sss-api-stage2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sss-api-stage2
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: sss_api
+      DB_USER: postgres
+      DB_PASSWORD: ${DB_PASSWORD:-sss-secure-password}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-redis-secure-password}
+      STAGE: stage2
+    ports:
+      - "3001:3001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+
+  # Consensus nodes
+  consensus-node-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.consensus
+    container_name: sss-consensus-1
+    environment:
+      NODE_ID: node-1
+      NODE_PORT: 7001
+      PUBLISH_PORT: 8001
+      DB_HOST: postgres
+      REDIS_HOST: redis
+    ports:
+      - "7001:7001"
+      - "8001:8001"
+    depends_on:
+      - postgres
+      - redis
+
+  consensus-node-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.consensus
+    container_name: sss-consensus-2
+    environment:
+      NODE_ID: node-2
+      NODE_PORT: 7002
+      PUBLISH_PORT: 8002
+      DB_HOST: postgres
+      REDIS_HOST: redis
+    ports:
+      - "7002:7002"
+      - "8002:8002"
+    depends_on:
+      - postgres
+      - redis
+
+  consensus-node-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.consensus
+    container_name: sss-consensus-3
+    environment:
+      NODE_ID: node-3
+      NODE_PORT: 7003
+      PUBLISH_PORT: 8003
+      DB_HOST: postgres
+      REDIS_HOST: redis
+    ports:
+      - "7003:7003"
+      - "8003:8003"
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  default:
+    name: sss-api-network
