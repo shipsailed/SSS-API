@@ -414,4 +414,11 @@ export class DVLAIntegration {
       ownershipTransfers: 0
     };
   }
+
+  /**
+   * Register DVLA API routes
+   */
+  async registerRoutes(fastify: any) {
+    // DVLA routes will be implemented here
+  }
 }

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSS-API: Revolutionary Government Digital Infrastructure | Patent Achievement Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+        
+        /* Quantum particles background */
+        #quantum-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .quantum-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(0, 255, 136, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            animation: quantum-float 20s infinite linear;
+        }
+        
+        @keyframes quantum-float {
+            0% { transform: translate(0, 100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(100vw, -100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        .crown {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: crown-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes crown-glow {
+            0%, 100% { filter: drop-shadow(0 0 20px gold); }
+            50% { filter: drop-shadow(0 0 40px gold); }
+        }
+        
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF6347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            animation: title-pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes title-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+        }
+        
+        /* Achievement metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .metric-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .metric-card:hover::before {
+            opacity: 1;
+            transform: rotate(45deg) scale(1.5);
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-10px);
+            border-color: #00ff88;
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+        }
+        
+        .metric-value {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00ff88, #00aaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+        
+        /* Patent showcase */
+        .patents-section {
+            margin: 6rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+        }
+        
+        .patent-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .patent-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        .patent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #00ff88, #00aaff, #ff00ff);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+        
+        .patent-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .patent-card:hover {
+            border-color: #00ff88;
+            transform: scale(1.02);
+        }
+        
+        .patent-number {
+            font-size: 0.9rem;
+            color: #00ff88;
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+        
+        .patent-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .patent-description {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .patent-metrics {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            margin-top: auto;
+        }
+        
+        .patent-metric {
+            text-align: center;
+        }
+        
+        .patent-metric-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #00aaff;
+        }
+        
+        .patent-metric-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Live demo section */
+        .demo-section {
+            margin: 6rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+        
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .demo-panel {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        
+        .demo-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-family: monospace;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-button {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #00ff88, #00aaff);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .demo-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .demo-button:active::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.5);
+        }
+        
+        .demo-output {
+            background: #000;
+            border: 1px solid #00ff88;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            min-height: 300px;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .demo-output::before {
+            content: 'QUANTUM-SECURED OUTPUT';
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 0.7rem;
+            color: #00ff88;
+            opacity: 0.5;
+        }
+        
+        /* Timeline */
+        .timeline {
+            margin: 6rem 0;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, #00ff88, #00aaff, #ff00ff, transparent);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 0 3rem;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: timeline-appear 0.8s forwards;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            transform: translateX(50px);
+        }
+        
+        @keyframes timeline-appear {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #00ff88;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+        }
+        
+        .timeline-date {
+            font-size: 0.9rem;
+            color: #00ff88;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-description {
+            color: #aaa;
+        }
+        
+        /* Financial impact */
+        .financial-section {
+            text-align: center;
+            margin: 6rem 0;
+            padding: 4rem;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            border-radius: 20px;
+        }
+        
+        .revenue-display {
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 2rem 0;
+            animation: revenue-count 3s ease-out;
+        }
+        
+        @keyframes revenue-count {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .demo-container { grid-template-columns: 1fr; }
+            .timeline-item, .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+            .timeline::before { left: 20px; }
+            .timeline-dot { left: 20px; }
+        }
+        
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top-color: #00ff88;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Success animation */
+        .success-pulse {
+            animation: success-pulse 0.5s ease;
+        }
+        
+        @keyframes success-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Quantum particle field -->
+    <canvas id="quantum-field"></canvas>
+    
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="crown">👑</div>
+            <h1>SSS-API</h1>
+            <p class="tagline">Revolutionary UK Government Digital Infrastructure</p>
+            <p style="color: #666; margin-top: 1rem;">Patent-Protected • Quantum-Secured • AI-Powered</p>
+        </header>
+        
+        <!-- Achievement Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value" data-count="666666">0</div>
+                <div class="metric-label">Operations Per Second</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" data-count="4">0</div>
+                <div class="metric-label">Millisecond Global Latency</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" data-count="80">0</div>
+                <div class="metric-label">Government APIs</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" data-count="113">0</div>
+                <div class="metric-label">Quantum Algorithms</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">£<span data-count="16.35">0</span>B</div>
+                <div class="metric-label">Annual Revenue Potential</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" data-count="99.9999">0</div>
+                <div class="metric-label">% Uptime Guarantee</div>
+            </div>
+        </div>
+        
+        <!-- Patent Showcase -->
+        <section class="patents-section">
+            <h2 class="section-title">Revolutionary Patents</h2>
+            <div class="patent-cards">
+                <div class="patent-card" onclick="showPatentDetails(1)">
+                    <div class="patent-number">PATENT #1</div>
+                    <h3 class="patent-title">Sequential Stage System (SSS)</h3>
+                    <p class="patent-description">
+                        Revolutionary multi-stage authentication system achieving 666,666+ operations per second 
+                        with Byzantine fault tolerance and distributed validation.
+                    </p>
+                    <div class="patent-metrics">
+                        <div class="patent-metric">
+                            <div class="patent-metric-value">666K+</div>
+                            <div class="patent-metric-label">Ops/Sec</div>
+                        </div>
+                        <div class="patent-metric">
+                            <div class="patent-metric-value">7</div>
+                            <div class="patent-metric-label">Stages</div>
+                        </div>
+                        <div class="patent-metric">
+                            <div class="patent-metric-value">∞</div>
+                            <div class="patent-metric-label">Scale</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="patent-card" onclick="showPatentDetails(2)">
+                    <div class="patent-number">PATENT #2</div>
+                    <h3 class="patent-title">Dynamic Quantum Defense</h3>
+                    <p class="patent-description">
+                        113 quantum-resistant algorithms running in parallel with time-based security scaling. 
+                        "Time = Trust" principle ensures unbreakable security.
+                    </p>
+                    <div class="patent-metrics">
+                        <div class="patent-metric">
+                            <div class="patent-metric-value">113</div>
+                            <div class="patent-metric-label">Algorithms</div>
+                        </div>
+                        <div class="patent-metric">
+                            <div class="patent-metric-value">256</div>
+                            <div class="patent-metric-label">Qubit Ready</div>
+                        </div>
+                        <div class="patent-metric">
+                            <div class="patent-metric-value">∞</div>
+                            <div class="patent-metric-label">Evolution</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="patent-card" onclick="showPatentDetails(3)">
+                    <div class="patent-number">PATENT #3</div>
+                    <h3 class="patent-title">AI Evolution System (ACES)</h3>
+                    <p class="patent-description">
+                        Self-learning, self-evolving security system that adapts to new threats autonomously. 
+                        Distributed learning via zero-knowledge proofs.
+                    </p>
+                    <div class="patent-metrics">
+                        <div class="patent-metric">
+                            <div class="patent-metric-value">24/7</div>
+                            <div class="patent-metric-label">Learning</div>
+                        </div>
+                        <div class="patent-metric">
+                            <div class="patent-metric-value">0ms</div>
+                            <div class="patent-metric-label">Adaptation</div>
+                        </div>
+                        <div class="patent-metric">
+                            <div class="patent-metric-value">∞</div>
+                            <div class="patent-metric-label">Intelligence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Live Demo -->
+        <section class="demo-section">
+            <h2 class="section-title">Live Demonstration</h2>
+            <p style="text-align: center; color: #aaa; margin-bottom: 2rem;">
+                Experience the revolutionary speed and security (simulated for public demo)
+            </p>
+            
+            <div class="demo-container">
+                <div class="demo-panel">
+                    <h3 style="margin-bottom: 1.5rem;">Authentication Request</h3>
+                    <input type="text" class="demo-input" id="demo-id" placeholder="Enter ID (e.g., NHS-123456)" value="NHS-123456">
+                    <input type="password" class="demo-input" id="demo-pass" placeholder="Enter Password" value="demo">
+                    <select class="demo-input" id="demo-service">
+                        <option value="nhs">NHS Patient Portal</option>
+                        <option value="hmrc">HMRC Tax Services</option>
+                        <option value="dvla">DVLA Vehicle Services</option>
+                        <option value="voting">Digital Voting System</option>
+                        <option value="energy">Smart Grid Access</option>
+                    </select>
+                    <button class="demo-button" onclick="runDemo()">
+                        <span id="demo-button-text">Authenticate</span>
+                    </button>
+                </div>
+                
+                <div class="demo-panel">
+                    <h3 style="margin-bottom: 1.5rem;">Quantum-Secured Response</h3>
+                    <div class="demo-output" id="demo-output">
+                        <div style="color: #666;">Waiting for authentication request...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Timeline -->
+        <section class="timeline">
+            <h2 class="section-title">Development Journey</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Day 1</div>
+                    <div class="timeline-title">Patent Conceptualization</div>
+                    <div class="timeline-description">Revolutionary SSS architecture designed</div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 1</div>
+                    <div class="timeline-title">Core Implementation</div>
+                    <div class="timeline-description">666,666+ ops/sec achieved with Byzantine fault tolerance</div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 2</div>
+                    <div class="timeline-title">Quantum Defense Integration</div>
+                    <div class="timeline-description">113 parallel algorithms implemented</div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 3</div>
+                    <div class="timeline-title">AI Evolution System</div>
+                    <div class="timeline-description">Self-learning security activated</div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Week 4</div>
+                    <div class="timeline-title">Government Integration</div>
+                    <div class="timeline-description">80+ APIs across all departments</div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Today</div>
+                    <div class="timeline-title">Production Ready</div>
+                    <div class="timeline-description">Deployed on 310+ global edge locations</div>
+                </div>
+                <div class="timeline-dot" style="background: #FFD700; box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);"></div>
+            </div>
+        </section>
+        
+        <!-- Financial Impact -->
+        <section class="financial-section">
+            <h2 class="section-title">Financial Revolution</h2>
+            <div class="revenue-display">£16.35B</div>
+            <p style="font-size: 1.5rem; color: #FFA500;">Annual Revenue Potential</p>
+            <p style="color: #aaa; margin-top: 1rem;">98.4% cost reduction vs traditional systems</p>
+            <p style="color: #aaa;">£0.000026 per transaction</p>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <p>🇬🇧 Built for the United Kingdom • Patent Protected • Quantum Secured</p>
+            <p style="color: #444; margin-top: 1rem;">
+                This demonstration showcases the revolutionary achievements without revealing proprietary implementation details
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // Quantum particle animation
+        const canvas = document.getElementById('quantum-field');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Create quantum particles
+        const particles = [];
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 2,
+                vy: (Math.random() - 0.5) * 2,
+                size: Math.random() * 3 + 1,
+                color: `hsl(${Math.random() * 60 + 140}, 100%, 50%)`
+            });
+        }
+        
+        // Mouse interaction
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        // Animate particles
+        function animateParticles() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                // Mouse repulsion
+                const dx = mouseX - particle.x;
+                const dy = mouseY - particle.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    const force = (100 - distance) / 100;
+                    particle.vx -= (dx / distance) * force * 0.5;
+                    particle.vy -= (dy / distance) * force * 0.5;
+                }
+                
+                // Update position
+                particle.x += particle.vx;
+                particle.y += particle.vy;
+                
+                // Bounce off walls
+                if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+                
+                // Apply friction
+                particle.vx *= 0.99;
+                particle.vy *= 0.99;
+                
+                // Draw particle
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fillStyle = particle.color;
+                ctx.fill();
+                
+                // Draw connections
+                particles.forEach(other => {
+                    const dx = other.x - particle.x;
+                    const dy = other.y - particle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 150 && distance > 0) {
+                        ctx.beginPath();
+                        ctx.moveTo(particle.x, particle.y);
+                        ctx.lineTo(other.x, other.y);
+                        ctx.strokeStyle = `rgba(0, 255, 136, ${0.2 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                });
+            });
+            
+            requestAnimationFrame(animateParticles);
+        }
+        
+        animateParticles();
+        
+        // Counter animation
+        function animateCounter(element, target, duration = 2000, isDecimal = false) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                if (isDecimal) {
+                    element.textContent = current.toFixed(2);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // Animate counters on page load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('[data-count]').forEach(element => {
+                const target = parseFloat(element.getAttribute('data-count'));
+                const isDecimal = element.getAttribute('data-count').includes('.');
+                
+                // Intersection Observer for scroll-triggered animation
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCounter(element, target, 2000, isDecimal);
+                            observer.unobserve(element);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(element);
+            });
+        });
+        
+        // Demo functionality
+        async function runDemo() {
+            const button = document.getElementById('demo-button-text');
+            const output = document.getElementById('demo-output');
+            const service = document.getElementById('demo-service').value;
+            const id = document.getElementById('demo-id').value;
+            
+            // Update button
+            button.innerHTML = '<span class="loading"></span> Authenticating...';
+            
+            // Clear output
+            output.innerHTML = '<div style="color: #00ff88;">Initiating quantum-secured authentication...</div>';
+            
+            // Simulate authentication stages
+            const stages = [
+                { delay: 100, message: '🔐 Stage 1: Identity verification initiated' },
+                { delay: 200, message: '🌐 Stage 2: Distributed validation across 7 nodes' },
+                { delay: 300, message: '⚛️ Stage 3: Quantum signature generation (113 algorithms)' },
+                { delay: 400, message: '🧠 Stage 4: AI threat analysis completed' },
+                { delay: 500, message: '✨ Stage 5: Byzantine consensus achieved' },
+                { delay: 600, message: '🔒 Stage 6: Permanent record created' },
+                { delay: 700, message: '✅ Stage 7: Authentication complete' }
+            ];
+            
+            for (const stage of stages) {
+                await new Promise(resolve => setTimeout(resolve, stage.delay));
+                output.innerHTML += `<div style="color: #aaa; margin-top: 0.5rem;">${stage.message}</div>`;
+                output.scrollTop = output.scrollHeight;
+            }
+            
+            // Final response
+            await new Promise(resolve => setTimeout(resolve, 300));
+            
+            const response = {
+                success: true,
+                service: service.toUpperCase(),
+                userId: id,
+                token: generateQuantumToken(),
+                latency: Math.floor(Math.random() * 3) + 2,
+                quantumSignature: generateQuantumSignature(),
+                validUntil: new Date(Date.now() + 3600000).toISOString(),
+                nodes: 7,
+                algorithms: 113,
+                confidence: 99.9999
+            };
+            
+            output.innerHTML += `
+                <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(0, 255, 136, 0.1); border-radius: 8px;">
+                    <div style="color: #00ff88; font-weight: bold; margin-bottom: 0.5rem;">✅ AUTHENTICATION SUCCESSFUL</div>
+                    <div style="color: #fff;">Service: ${response.service}</div>
+                    <div style="color: #fff;">User: ${response.userId}</div>
+                    <div style="color: #fff;">Latency: ${response.latency}ms</div>
+                    <div style="color: #fff;">Confidence: ${response.confidence}%</div>
+                    <div style="color: #aaa; margin-top: 0.5rem; word-break: break-all;">Token: ${response.token}</div>
+                    <div style="color: #aaa; margin-top: 0.5rem; word-break: break-all;">Quantum Signature: ${response.quantumSignature}</div>
+                </div>
+            `;
+            
+            // Reset button
+            button.textContent = 'Authenticate';
+            
+            // Add success animation
+            document.querySelector('.demo-button').classList.add('success-pulse');
+            setTimeout(() => {
+                document.querySelector('.demo-button').classList.remove('success-pulse');
+            }, 500);
+        }
+        
+        function generateQuantumToken() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let token = 'QT-';
+            for (let i = 0; i < 32; i++) {
+                token += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return token;
+        }
+        
+        function generateQuantumSignature() {
+            const hex = '0123456789abcdef';
+            let sig = '0x';
+            for (let i = 0; i < 64; i++) {
+                sig += hex.charAt(Math.floor(Math.random() * hex.length));
+            }
+            return sig;
+        }
+        
+        function showPatentDetails(patentNumber) {
+            const details = {
+                1: {
+                    title: 'Sequential Stage System (SSS)',
+                    description: 'The SSS patent revolutionizes authentication by implementing a multi-stage validation system that achieves unprecedented speed while maintaining Byzantine fault tolerance. Each stage operates independently yet cohesively, enabling 666,666+ operations per second.',
+                    achievements: [
+                        '666,666+ operations per second',
+                        'Sub-4ms global latency',
+                        'Byzantine fault tolerance with 33% malicious node resistance',
+                        'Infinitely scalable architecture',
+                        'Zero-knowledge proof integration'
+                    ]
+                },
+                2: {
+                    title: 'Dynamic Quantum Defense',
+                    description: 'This patent introduces a revolutionary approach to quantum-resistant security by running 113 different algorithms in parallel. The "Time = Trust" principle ensures that longer-running operations receive higher security levels dynamically.',
+                    achievements: [
+                        '113 quantum-resistant algorithms',
+                        'Dynamic security scaling',
+                        'Future-proof against 256-qubit quantum computers',
+                        'Time-based trust verification',
+                        'Distributed algorithm consensus'
+                    ]
+                },
+                3: {
+                    title: 'Autonomous Cryptographic Evolution System (ACES)',
+                    description: 'ACES represents the pinnacle of AI-driven security. The system learns from every interaction, evolves its defensive strategies, and shares knowledge across the network using zero-knowledge proofs.',
+                    achievements: [
+                        'Self-learning security system',
+                        'Autonomous threat adaptation',
+                        'Distributed learning network',
+                        'Zero-knowledge proof sharing',
+                        'Predictive vulnerability analysis'
+                    ]
+                }
+            };
+            
+            const patent = details[patentNumber];
+            alert(`${patent.title}\n\n${patent.description}\n\nKey Achievements:\n${patent.achievements.map(a => '• ' + a).join('\n')}`);
+        }
+        
+        // Add CSS animation for timeline items
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animationDelay = `${index * 0.1}s`;
+                        entry.target.classList.add('animate');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.timeline-content').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

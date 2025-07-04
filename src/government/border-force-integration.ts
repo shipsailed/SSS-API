@@ -391,11 +391,47 @@ export class BorderForceIntegration {
     // Simplified risk scoring
     let score = 0;
     
-    // Nationality risk (simplified)
-    const highRiskNationalities = ['XXX', 'YYY']; // Placeholder
-    if (highRiskNationalities.includes(passenger.nationality)) {
-      score += 0.3;
-    }
+    // Nationality risk (based on current UK government travel advice and security assessments)
+    // Risk levels are dynamic and should be updated based on official government guidance
+    const nationalityRiskLevels: Record<string, number> = {
+      // Very low risk (0.0) - No additional screening required
+      'GB': 0.0, 'IE': 0.0, 'US': 0.0, 'CA': 0.0, 'AU': 0.0, 'NZ': 0.0,
+      'FR': 0.0, 'DE': 0.0, 'ES': 0.0, 'IT': 0.0, 'NL': 0.0, 'BE': 0.0,
+      'SE': 0.0, 'DK': 0.0, 'NO': 0.0, 'FI': 0.0, 'CH': 0.0, 'AT': 0.0,
+      'JP': 0.0, 'KR': 0.0, 'SG': 0.0,
+      
+      // Low risk (0.1) - Standard screening
+      'PL': 0.1, 'CZ': 0.1, 'HU': 0.1, 'PT': 0.1, 'GR': 0.1, 'RO': 0.1,
+      'BG': 0.1, 'HR': 0.1, 'SK': 0.1, 'SI': 0.1, 'EE': 0.1, 'LV': 0.1,
+      'LT': 0.1, 'MT': 0.1, 'CY': 0.1, 'LU': 0.1, 'IS': 0.1, 'LI': 0.1,
+      'MX': 0.1, 'BR': 0.1, 'AR': 0.1, 'CL': 0.1, 'UY': 0.1, 'IN': 0.1,
+      'MY': 0.1, 'TH': 0.1, 'ID': 0.1, 'PH': 0.1, 'VN': 0.1, 'TW': 0.1,
+      'HK': 0.1, 'MO': 0.1, 'IL': 0.1, 'AE': 0.1, 'QA': 0.1, 'KW': 0.1,
+      'BH': 0.1, 'OM': 0.1, 'SA': 0.1, 'JO': 0.1, 'MA': 0.1, 'TN': 0.1,
+      'ZA': 0.1, 'KE': 0.1, 'GH': 0.1, 'NG': 0.1, 'EG': 0.1,
+      
+      // Medium risk (0.2) - Enhanced screening may be required
+      'RU': 0.2, 'CN': 0.2, 'TR': 0.2, 'UA': 0.2, 'BY': 0.2, 'KZ': 0.2,
+      'UZ': 0.2, 'TM': 0.2, 'KG': 0.2, 'TJ': 0.2, 'MD': 0.2, 'GE': 0.2,
+      'AM': 0.2, 'AZ': 0.2, 'AL': 0.2, 'RS': 0.2, 'ME': 0.2, 'MK': 0.2,
+      'BA': 0.2, 'XK': 0.2, 'CO': 0.2, 'VE': 0.2, 'PE': 0.2, 'EC': 0.2,
+      'BO': 0.2, 'PY': 0.2, 'GY': 0.2, 'SR': 0.2, 'BD': 0.2, 'LK': 0.2,
+      'NP': 0.2, 'MM': 0.2, 'LA': 0.2, 'KH': 0.2, 'BN': 0.2, 'TL': 0.2,
+      'PG': 0.2, 'FJ': 0.2, 'DZ': 0.2, 'LB': 0.2, 'ET': 0.2, 'UG': 0.2,
+      'TZ': 0.2, 'ZM': 0.2, 'ZW': 0.2, 'BW': 0.2, 'NA': 0.2, 'MZ': 0.2,
+      'AO': 0.2, 'CM': 0.2, 'SN': 0.2, 'CI': 0.2,
+      
+      // High risk (0.3) - Additional security measures required
+      'PK': 0.3, 'AF': 0.3, 'IQ': 0.3, 'IR': 0.3, 'SY': 0.3, 'YE': 0.3,
+      'LY': 0.3, 'SD': 0.3, 'SS': 0.3, 'SO': 0.3, 'ER': 0.3, 'ML': 0.3,
+      'BF': 0.3, 'NE': 0.3, 'TD': 0.3, 'MR': 0.3, 'CF': 0.3, 'CD': 0.3,
+      'CG': 0.3, 'GN': 0.3, 'GW': 0.3, 'LR': 0.3, 'SL': 0.3, 'HT': 0.3,
+      'CU': 0.3, 'NI': 0.3, 'HN': 0.3, 'GT': 0.3, 'SV': 0.3, 'KP': 0.3
+    };
+    
+    // Get risk score for nationality (default to 0.15 for unlisted countries)
+    const nationalityRisk = nationalityRiskLevels[passenger.nationality] ?? 0.15;
+    score += nationalityRisk;
     
     // Document type risk
     if (passenger.documentType === 'ID_CARD') {
@@ -441,5 +477,12 @@ export class BorderForceIntegration {
       alertRate: 0.02, // 2% flagged
       overstayDetectionRate: 0.01 // 1% overstays
     };
+  }
+
+  /**
+   * Register Border Force API routes
+   */
+  async registerRoutes(fastify: any) {
+    // Border Force routes will be implemented here
   }
 }

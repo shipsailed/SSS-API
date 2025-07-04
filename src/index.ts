@@ -21,6 +21,8 @@ import { registerSmartCityRoutes } from './api/smart-city-api.js';
 import { registerVotingRoutes } from './api/voting-api.js';
 import { registerUniversalIdentityRoutes } from './api/universal-identity-api.js';
 import { registerCBDCRoutes } from './api/cbdc-api.js';
+import { EthicalLicensingFramework } from './core/ethical-licensing-framework.js';
+import { freedomProtection, enforceFreedom } from './core/freedom-protection-system.js';
 import * as dotenv from 'dotenv';
 
 // Load environment variables
@@ -68,6 +70,9 @@ const hmrcIntegration = new HMRCIntegration(stage1, stage2);
 const dvlaIntegration = new DVLAIntegration(stage1, stage2);
 const borderForceIntegration = new BorderForceIntegration(stage1, stage2);
 
+// Initialize ethical licensing framework
+const ethicalFramework = new EthicalLicensingFramework();
+
 // Create Fastify server
 const fastify = Fastify({
   logger: process.env.NODE_ENV === 'production' 
@@ -85,6 +90,115 @@ const fastify = Fastify({
       }
 });
 
+// Ethical licensing middleware
+fastify.addHook('onRequest', async (request, reply) => {
+  // Skip ethical checks for health checks and license registration
+  if (request.url === '/health' || request.url === '/api/v1/license/register') {
+    return;
+  }
+  
+  // Extract API key from headers
+  const apiKey = request.headers['x-api-key'] as string;
+  
+  // Skip for local development if configured
+  if (process.env.SKIP_ETHICAL_CHECK === 'true' && process.env.NODE_ENV !== 'production') {
+    return;
+  }
+  
+  if (!apiKey) {
+    reply.code(401);
+    return reply.send({
+      error: 'Unauthorized',
+      message: 'API key required. Register at /api/v1/license/register'
+    });
+  }
+  
+  // Validate request against ethical framework
+  const validation = await ethicalFramework.validateRequest({
+    apiKey,
+    endpoint: request.url,
+    requestData: request.body,
+    purpose: request.headers['x-purpose'] as string
+  });
+  
+  if (!validation.isValid) {
+    if (validation.action === 'deny') {
+      reply.code(403);
+      return reply.send({
+        error: 'Forbidden',
+        message: validation.reason,
+        action: validation.action
+      });
+    } else if (validation.action === 'throttle') {
+      reply.code(429);
+      return reply.send({
+        error: 'Too Many Requests',
+        message: validation.reason,
+        retryAfter: validation.retryAfter
+      });
+    } else if (validation.action === 'escalate') {
+      reply.code(451);
+      return reply.send({
+        error: 'Unavailable For Legal Reasons',
+        message: validation.reason,
+        action: 'manual_review_required'
+      });
+    }
+  }
+  
+  // Add ethical score to request for logging
+  request.ethicalScore = validation.ethicalScore;
+});
+
+// Freedom Protection middleware - AFTER ethical licensing
+fastify.addHook('preHandler', async (request, reply) => {
+  // Skip for health checks
+  if (request.url === '/health') {
+    return;
+  }
+  
+  try {
+    // Validate against freedom protection system
+    const freedomCheck = await freedomProtection.validateRequest({
+      method: request.method,
+      url: request.url,
+      body: request.body,
+      headers: request.headers,
+      purpose: request.headers['x-purpose'] as string
+    });
+    
+    if (!freedomCheck.allowed) {
+      // Log the violation
+      fastify.log.error({
+        msg: 'Freedom Protection Violation',
+        reason: freedomCheck.reason,
+        url: request.url,
+        apiKey: request.headers['x-api-key']
+      });
+      
+      reply.code(451); // Unavailable for Legal Reasons
+      return reply.send({
+        error: 'Freedom Protection Violation',
+        message: freedomCheck.reason,
+        principle: 'This system exists to protect human freedom, not restrict it'
+      });
+    }
+    
+    // Apply data minimization
+    if (request.body) {
+      request.body = await enforceFreedom(request.body);
+    }
+  } catch (error) {
+    fastify.log.error({ error, msg: 'Freedom protection error' });
+    // Fail closed - if we can't verify freedom, we don't proceed
+    reply.code(500);
+    return reply.send({
+      error: 'Freedom Protection Error',
+      message: 'Cannot verify request preserves human freedom'
+    });
+  }
+});
+
 // Health check endpoint
 fastify.get('/health', async (request, reply) => {
   const [stage1Health, stage2Health] = await Promise.all([
@@ -100,6 +214,49 @@ fastify.get('/health', async (request, reply) => {
       stage2: stage2Health
     }
   };
+});
+
+// License registration endpoint
+fastify.post<{ 
+  Body: {
+    organizationId: string;
+    organizationName: string;
+    organizationType: 'government' | 'healthcare' | 'education' | 'nonprofit' | 'commercial';
+    intendedUse: string[];
+    dataRetentionDays: number;
+    acceptedTerms: boolean;
+  }
+}>('/api/v1/license/register', async (request, reply) => {
+  try {
+    const license = await ethicalFramework.registerLicensee(request.body);
+    return {
+      success: true,
+      license
+    };
+  } catch (error: any) {
+    reply.code(400);
+    return {
+      success: false,
+      error: error.message
+    };
+  }
+});
+
+// License compliance monitoring endpoint
+fastify.get<{ Params: { licenseId: string } }>('/api/v1/license/:licenseId/compliance', async (request, reply) => {
+  try {
+    const report = await ethicalFramework.monitorCompliance(request.params.licenseId);
+    return {
+      success: true,
+      report
+    };
+  } catch (error: any) {
+    reply.code(404);
+    return {
+      success: false,
+      error: error.message
+    };
+  }
 });
 
 // Core SSS API endpoints

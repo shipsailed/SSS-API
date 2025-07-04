@@ -6,6 +6,7 @@ import {
 } from '../shared/types/index.js';
 import { Stage1ValidationService } from '../stage1/index.js';
 import { Stage2StorageService } from '../stage2/index.js';
+import { DynamicQuantumDefense } from '../core/dynamic-quantum-defense.js';
 
 interface TaxpayerRecord {
   utr?: string;
@@ -272,8 +273,29 @@ export class HMRCIntegration {
   }
 
   private async generateCompanySignature(auth: HMRCTaxAuth): Promise<string> {
-    // In production, use company digital certificate
-    return 'company-digital-signature-placeholder';
+    // Generate a proper digital signature using quantum-secure algorithms
+    const signatureData = {
+      companyNumber: auth.companyNumber,
+      timestamp: Date.now(),
+      nonce: crypto.randomUUID(),
+      authType: auth.type,
+      taxYear: new Date().getFullYear()
+    };
+
+    // Use quantum defense to create a secure signature
+    const quantumDefense = new DynamicQuantumDefense();
+    const signature = await quantumDefense.signData(signatureData);
+    
+    // Create a compact signature format for HMRC
+    const compactSignature = {
+      sig: signature.signature.substring(0, 128), // First 128 chars of quantum signature
+      ts: signatureData.timestamp,
+      cn: auth.companyNumber,
+      alg: 'QUANTUM-HMRC-v1'
+    };
+    
+    // Return base64 encoded signature
+    return Buffer.from(JSON.stringify(compactSignature)).toString('base64');
   }
 
   private async fetchTaxpayerRecord(auth: HMRCTaxAuth): Promise<TaxpayerRecord> {
@@ -367,5 +389,12 @@ export class HMRCIntegration {
       realTimeSettlements: this.config.realTimeSettlement,
       complianceLevel: 'HMRC_COMPLIANT'
     };
+  }
+
+  /**
+   * Register HMRC API routes
+   */
+  async registerRoutes(fastify: any) {
+    // HMRC routes will be implemented here
   }
 }

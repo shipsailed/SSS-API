@@ -36,6 +36,32 @@ export default {
         case '/api/v1/validate':
           return await handleValidate(request, env, ctx, start);
           
+        // New API endpoints
+        case '/api/v1/license/register':
+          return await forwardToOrigin(request, env, ctx, start);
+          
+        case '/api/v1/energy/optimize-grid':
+        case '/api/v1/energy/trading':
+        case '/api/v1/energy/consumption-monitoring':
+        case '/api/v1/energy/demand-response':
+        case '/api/v1/energy/renewable-integration':
+          return await forwardToOrigin(request, env, ctx, start);
+          
+        case '/api/v1/emergency/call':
+        case '/api/v1/emergency/dispatch':
+        case '/api/v1/emergency/multi-agency':
+        case '/api/v1/emergency/resource-tracking':
+        case '/api/v1/emergency/public-alert':
+          return await forwardToOrigin(request, env, ctx, start);
+          
+        case '/api/v1/agri/crop-monitoring':
+        case '/api/v1/agri/supply-chain':
+        case '/api/v1/agri/food-safety':
+        case '/api/v1/agri/subsidy-management':
+        case '/api/v1/agri/weather-impact':
+        case '/api/v1/agri/market-analysis':
+          return await forwardToOrigin(request, env, ctx, start);
+          
         case '/health':
           return new Response(JSON.stringify({
             status: 'healthy',
