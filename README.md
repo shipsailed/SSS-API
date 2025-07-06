@@ -76,12 +76,12 @@ interface PrivacyGuarantees {
 }
 ```
 
-### **Prohibited Uses:**
-- ❌ Mass surveillance systems
-- ❌ Social credit scoring
-- ❌ Political dissent tracking  
-- ❌ Financial control systems
-- ❌ Behavioral monitoring
+### **Usage Guidelines and Restrictions:**
+- ⚖️ Unauthorized mass data collection without proper legal authority
+- ⚖️ Discriminatory profiling or scoring systems without due process
+- ⚖️ Unauthorized monitoring of constitutionally protected activities
+- ⚖️ Financial systems that violate existing regulatory frameworks
+- ⚖️ Data collection exceeding authorized government purposes
 
 ## 🚀 Quick Start
 

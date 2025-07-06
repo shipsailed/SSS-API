@@ -333,11 +333,11 @@ export class EthicalLicensingFramework {
   
   private generateRestrictions(params: any): string[] {
     const restrictions = [
-      'No mass surveillance',
-      'No discriminatory profiling',
+      'Compliance with applicable surveillance laws required',
+      'Due process requirements for any profiling activities',
       'Data minimization required',
       'Purpose limitation enforced',
-      'No sale or sharing of data',
+      'Data sharing only with proper legal authorization',
       'Audit trail required'
     ];
     

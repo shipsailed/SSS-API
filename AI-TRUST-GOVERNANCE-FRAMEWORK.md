@@ -73,12 +73,12 @@ export class AIAccountabilityEngine {
 ```typescript
 export class AIAlignmentMonitor {
   private readonly ethicalBoundaries = {
-    // Hard-coded, non-negotiable boundaries
-    NEVER_HARM_HUMANS: true,
-    NEVER_VIOLATE_PRIVACY: true,
-    NEVER_ENABLE_SURVEILLANCE: true,
-    NEVER_DISCRIMINATE: true,
-    NEVER_DECEIVE: true
+    // Regulatory compliance boundaries
+    REQUIRE_LEGAL_AUTHORIZATION: true,
+    RESPECT_PRIVACY_LAWS: true,
+    ENFORCE_DUE_PROCESS: true,
+    PREVENT_DISCRIMINATION: true,
+    MAINTAIN_TRANSPARENCY: true
   };
   
   async monitorDecision(decision: AIDecision): Promise<AlignmentResult> {

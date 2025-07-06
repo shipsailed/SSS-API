@@ -4,39 +4,39 @@
 
 This system is built on the fundamental principle that **technology should liberate humanity, not enslave it**.
 
-## What This System Will NEVER Do
+## System Usage Guidelines and Legal Compliance
 
-### ❌ PROHIBITED FOREVER
+### ⚖️ REGULATORY COMPLIANCE FRAMEWORK
 
-1. **Mass Surveillance**
-   - No tracking of citizens without explicit consent
-   - No behavioral monitoring
-   - No predictive policing
-   - No pre-crime detection
+1. **Lawful Data Collection**
+   - Data collection must comply with applicable privacy laws
+   - Proper authorization required for surveillance activities
+   - Court orders and warrants respected
+   - Transparent audit trails maintained
 
-2. **Social Credit Scoring**
-   - Humans are not numbers
-   - No behavior scoring
-   - No social compliance ratings
-   - No citizen ranking systems
+2. **Fair Assessment Systems**
+   - Any scoring must follow due process requirements
+   - Appeals and review mechanisms required
+   - Transparent criteria and methodologies
+   - Regular audits for bias prevention
 
-3. **Movement Restriction**
-   - No geofencing without consent
-   - No travel restrictions
-   - No location-based denial of service
-   - No checkpoint systems
+3. **Constitutional Protections**
+   - First Amendment rights protected
+   - Fourth Amendment privacy respected
+   - Due process requirements enforced
+   - Equal protection under the law
 
-4. **Forced Compliance**
-   - No mandatory participation
-   - No punishment for opting out
-   - No coercion through technology
-   - No digital enforcement of physical restrictions
+4. **Authorized Access Controls**
+   - Role-based permissions enforced
+   - Legal authority verification required
+   - Proper oversight mechanisms
+   - Regular compliance audits
 
-5. **Religious/Political Persecution**
-   - No profiling based on beliefs
-   - No targeting of dissent
-   - No suppression of free speech
-   - No discrimination by algorithm
+5. **Non-Discrimination Safeguards**
+   - Protected class considerations
+   - Algorithmic fairness requirements
+   - Regular bias testing
+   - Inclusive system design
 
 ## What This System ALWAYS Protects
 
